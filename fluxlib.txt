@@ -206,66 +206,66 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		end
 	)
 	
-function Flux:NotificationImage(imageId, buttontitle)
-    local MainFrame = game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("FluxUI") -- adjust path
+	function Flux:NotificationImage(imageId, buttontitle)
+		local MainFrame = game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("FluxUI") -- adjust path
     
-    -- Remove old notifications
-    for i, v in next, MainFrame:GetChildren() do
-        if v.Name == "NotificationBase" then
-            v:Destroy()
-        end
-    end
+		-- Remove old notifications
+		for i, v in next, MainFrame:GetChildren() do
+			if v.Name == "NotificationBase" then
+				v:Destroy()
+			end
+		end
 
-    local NotificationBase = Instance.new("TextButton")
-    NotificationBase.Name = "NotificationBase"
-    NotificationBase.Parent = MainFrame
-    NotificationBase.BackgroundTransparency = 1
-    NotificationBase.Size = UDim2.new(0, 706, 0, 484)
-    NotificationBase.AutoButtonColor = false
-    NotificationBase.Text = ""
+		local NotificationBase = Instance.new("TextButton")
+		NotificationBase.Name = "NotificationBase"
+		NotificationBase.Parent = MainFrame
+		NotificationBase.BackgroundTransparency = 1
+		NotificationBase.Size = UDim2.new(0, 706, 0, 484)
+		NotificationBase.AutoButtonColor = false
+		NotificationBase.Text = ""
 
-    local NotificationFrame = Instance.new("Frame")
-    NotificationFrame.Name = "NotificationFrame"
-    NotificationFrame.Parent = NotificationBase
-    NotificationFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-    NotificationFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-    NotificationFrame.Size = UDim2.new(0, 400, 0, 214)
-    NotificationFrame.BackgroundColor3 = Color3.fromRGB(50, 53, 59)
+		local NotificationFrame = Instance.new("Frame")
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = NotificationBase
+		NotificationFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+		NotificationFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+		NotificationFrame.Size = UDim2.new(0, 400, 0, 214)
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(50, 53, 59)
 
-    local NotificationTitle = Instance.new("TextLabel")
-    NotificationTitle.Name = "NotificationTitle"
-    NotificationTitle.Parent = NotificationFrame
-    NotificationTitle.Size = UDim2.new(0, 111, 0, 34)
-    NotificationTitle.Position = UDim2.new(0.04, 0, 0.08, 0)
-    NotificationTitle.BackgroundTransparency = 1
-    NotificationTitle.Font = Enum.Font.GothamBold
-    NotificationTitle.Text = "Notification"
-    NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-    NotificationTitle.TextSize = 24
+		local NotificationTitle = Instance.new("TextLabel")
+		NotificationTitle.Name = "NotificationTitle"
+		NotificationTitle.Parent = NotificationFrame
+		NotificationTitle.Size = UDim2.new(0, 111, 0, 34)
+		NotificationTitle.Position = UDim2.new(0.04, 0, 0.08, 0)
+		NotificationTitle.BackgroundTransparency = 1
+		NotificationTitle.Font = Enum.Font.GothamBold
+		NotificationTitle.Text = "Notification"
+		NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+		NotificationTitle.TextSize = 24
 
-    local CloseBtn = Instance.new("TextButton")
-    CloseBtn.Name = "CloseBtn"
-    CloseBtn.Parent = NotificationFrame
-    CloseBtn.Size = UDim2.new(0, 366, 0, 43)
-    CloseBtn.Position = UDim2.new(0.04, 0, 0.72, 0)
-    CloseBtn.Text = buttontitle
-    CloseBtn.BackgroundTransparency = 0.5
-    CloseBtn.TextColor3 = Color3.fromRGB(255,255,255)
+		local CloseBtn = Instance.new("TextButton")
+		CloseBtn.Name = "CloseBtn"
+		CloseBtn.Parent = NotificationFrame
+		CloseBtn.Size = UDim2.new(0, 366, 0, 43)
+		CloseBtn.Position = UDim2.new(0.04, 0, 0.72, 0)
+		CloseBtn.Text = buttontitle
+		CloseBtn.BackgroundTransparency = 0.5
+		CloseBtn.TextColor3 = Color3.fromRGB(255,255,255)
     
-    local NotificationImage = Instance.new("ImageLabel")
-    NotificationImage.Name = "NotificationImage"
-    NotificationImage.Parent = NotificationFrame
-    NotificationImage.BackgroundTransparency = 1
-    NotificationImage.Position = UDim2.new(0.7, 0, 0.1, 0)
-    NotificationImage.Size = UDim2.new(0, 100, 0, 100)
-    NotificationImage.Image = imageId
-    NotificationImage.ScaleType = Enum.ScaleType.Fit
+		local NotificationImage = Instance.new("ImageLabel")
+		NotificationImage.Name = "NotificationImage"
+		NotificationImage.Parent = NotificationFrame
+		NotificationImage.BackgroundTransparency = 1
+		NotificationImage.Position = UDim2.new(0.7, 0, 0.1, 0)
+		NotificationImage.Size = UDim2.new(0, 100, 0, 100)
+		NotificationImage.Image = imageId
+		NotificationImage.ScaleType = Enum.ScaleType.Fit
 
     -- Close button functionality
-    CloseBtn.MouseButton1Click:Connect(function()
-        NotificationBase:Destroy()
-    end)
-end
+		CloseBtn.MouseButton1Click:Connect(function()
+			NotificationBase:Destroy()
+		end)
+	end
 
 	local Tabs = {}
 	function Tabs:Tab(text,ico)
