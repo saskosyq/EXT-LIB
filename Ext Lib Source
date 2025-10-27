@@ -206,7 +206,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		end
 	)
 	
-	function Flux:Notification(desc,buttontitle)
+	function Flux:NotificationImage(imageId, buttontitle)
 		for i, v in next, MainFrame:GetChildren() do
 			if v.Name == "NotificationBase" then
 				v:Destroy()
@@ -220,7 +220,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		local NotificationTitle = Instance.new("TextLabel")
 		local CloseBtn = Instance.new("TextButton")
 		local CloseBtnCorner = Instance.new("UICorner")
-		local NotificationDesc = Instance.new("TextLabel")
+		local NotificationImage = Instance.new("ImageLabel") -- New image label
 
 		NotificationBase.Name = "NotificationBase"
 		NotificationBase.Parent = MainFrame
@@ -294,18 +294,23 @@ function Flux:Window(text, bottom,mainclr,toclose)
 		CloseBtnCorner.Name = "CloseBtnCorner"
 		CloseBtnCorner.Parent = CloseBtn
 
-		NotificationDesc.Name = "NotificationDesc"
-		NotificationDesc.Parent = NotificationFrame
-		NotificationDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		NotificationDesc.BackgroundTransparency = 1.000
-		NotificationDesc.Position = UDim2.new(0.112499997, 0, 0.266355127, 0)
-		NotificationDesc.Size = UDim2.new(0, 309, 0, 82)
-		NotificationDesc.Font = Enum.Font.Gotham
-		NotificationDesc.Text = desc
-		NotificationDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
-		NotificationDesc.TextSize = 15.000
-		NotificationDesc.TextWrapped = true
-		NotificationDesc.TextTransparency = 1
+		-- Configure the image
+		NotificationImage.Name = "NotificationImage"
+		NotificationImage.Parent = NotificationFrame  -- Parent it to the frame
+		NotificationImage.BackgroundTransparency = 1
+		NotificationImage.Position = UDim2.new(0.7, 0, 0.1, 0)  -- Adjust as needed
+		NotificationImage.Size = UDim2.new(0, 100, 0, 100)      -- Adjust size
+		NotificationImage.Image = imageId                       -- Use the imageId passed to the function
+		NotificationImage.ScaleType = Enum.ScaleType.Fit        -- Keeps aspect ratio
+		NotificationImage.Visible = true
+
+		NotificationImage.ImageTransparency = 1
+		TweenService:Create(
+			NotificationImage,
+			TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{ImageTransparency = 0}
+		):Play()
+
 		
 		CloseBtn.MouseEnter:Connect(function()
 			TweenService:Create(
